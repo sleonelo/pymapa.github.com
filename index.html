@@ -264,7 +264,7 @@
             if (flightTrackLayer) {
                 map.removeLayer(flightTrackLayer);
             }
-            const trackUrl = `https://opensky-network.org/api/tracks/all?icao24=${icao24}&time=0`;
+            const trackUrl = `https://194.209.200.34/api/tracks/all?icao24=${icao24}&time=0`;
             fetch(trackUrl)
                 .then(response => {
                     if (!response.ok) throw new Error('Network response was not ok: ' + response.statusText);
