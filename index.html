@@ -6,18 +6,20 @@
         <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
-        <link rel="stylesheet" href="css/leaflet.css"><link rel="stylesheet" href="css/L.Control.Locate.min.css">
-        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/L.Control.Locate.min.css">
+        <link rel="stylesheet" href="css/qgis2web.css">
+        <link rel="stylesheet" href="css/fontawesome-all.min.css">
         <link rel="stylesheet" href="css/MarkerCluster.css">
         <link rel="stylesheet" href="css/MarkerCluster.Default.css">
         <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
         <style>
-        html, body, #map {
-            width: 100%;
-            height: 100%;
-            padding: 0;
-            margin: 0;
-        }
+            html, body, #map {
+                width: 100%;
+                height: 100%;
+                padding: 0;
+                margin: 0;
+            }
         </style>
         <title></title>
     </head>
@@ -25,14 +27,11 @@
         <div id="map">
         </div>
         <script src="js/qgis2web_expressions.js"></script>
-        <script src="js/leaflet.js"></script><script src="js/L.Control.Locate.min.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/L.Control.Locate.min.js"></script>
         <script src="js/leaflet.rotatedMarker.js"></script>
-        <script src="js/leaflet.pattern.js"></script>
         <script src="js/leaflet-hash.js"></script>
         <script src="js/Autolinker.min.js"></script>
-        <script src="js/rbush.min.js"></script>
-        <script src="js/labelgun.min.js"></script>
-        <script src="js/labels.js"></script>
         <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
         <script src="js/leaflet.markercluster.js"></script>
         <script src="data/lineasfir_4.js"></script>
@@ -47,9 +46,7 @@
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
         L.control.locate({locateOptions: {maxZoom: 19}}).addTo(map);
-        var bounds_group = new L.featureGroup([]);
-        function setBounds() {
-        }
+
         map.createPane('pane_ESRISatellite_0');
         map.getPane('pane_ESRISatellite_0').style.zIndex = 400;
         var layer_ESRISatellite_0 = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
@@ -61,8 +58,8 @@
             minNativeZoom: 0,
             maxNativeZoom: 20
         });
-        layer_ESRISatellite_0;
         map.addLayer(layer_ESRISatellite_0);
+
         map.createPane('pane_ESRIBoundariesPlaces_1');
         map.getPane('pane_ESRIBoundariesPlaces_1').style.zIndex = 401;
         var layer_ESRIBoundariesPlaces_1 = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}', {
@@ -74,8 +71,8 @@
             minNativeZoom: 0,
             maxNativeZoom: 20
         });
-        layer_ESRIBoundariesPlaces_1;
         map.addLayer(layer_ESRIBoundariesPlaces_1);
+
         map.createPane('pane_GoogleHybrid_2');
         map.getPane('pane_GoogleHybrid_2').style.zIndex = 402;
         var layer_GoogleHybrid_2 = L.tileLayer('https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', {
@@ -87,30 +84,19 @@
             minNativeZoom: 0,
             maxNativeZoom: 20
         });
-        layer_GoogleHybrid_2;
         map.addLayer(layer_GoogleHybrid_2);
+
         map.createPane('pane_cartavfr2_3');
         map.getPane('pane_cartavfr2_3').style.zIndex = 403;
         var img_cartavfr2_3 = 'data/cartavfr2_3.png';
         var img_bounds_cartavfr2_3 = [[-41.18301020752956,-77.73334821128147],[-31.650633701273296,-61.51555771690816]];
-        var layer_cartavfr2_3 = new L.imageOverlay(img_cartavfr2_3,
-                                              img_bounds_cartavfr2_3,
-                                              {pane: 'pane_cartavfr2_3'});
-        bounds_group.addLayer(layer_cartavfr2_3);
+        var layer_cartavfr2_3 = new L.imageOverlay(img_cartavfr2_3, img_bounds_cartavfr2_3, {pane: 'pane_cartavfr2_3'});
         map.addLayer(layer_cartavfr2_3);
+
         function pop_lineasfir_4(feature, layer) {
-            var popupContent = '<table>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">descripción:</th>\
-                        <td>' + (feature.properties['descripción:'] !== null ? autolinker.link(feature.properties['descripción:'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
+            var popupContent = '<table>\n                    <tr>\n                        <td colspan="2">' + (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</td>\n                    </tr>\n                    <tr>\n                        <th scope="row">descripción:</th>\n                        <td>' + (feature.properties['descripción:'] !== null ? autolinker.link(feature.properties['descripción:'].toLocaleString()) : '') + '</td>\n                    </tr>\n                </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
-
         function style_lineasfir_4_0() {
             return {
                 pane: 'pane_lineasfir_4',
@@ -136,42 +122,21 @@
             onEachFeature: pop_lineasfir_4,
             style: style_lineasfir_4_0,
         });
-        bounds_group.addLayer(layer_lineasfir_4);
         map.addLayer(layer_lineasfir_4);
+
         function pop_Defensacivil_5(feature, layer) {
-            var popupContent = '<table>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">Departamento:</th>\
-                        <td>' + (feature.properties['Departamento:'] !== null ? autolinker.link(feature.properties['Departamento:'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">Provincia:</th>\
-                        <td>' + (feature.properties['Provincia:'] !== null ? autolinker.link(feature.properties['Provincia:'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">Responsable:</th>\
-                        <td>' + (feature.properties['Responsable:'] !== null ? autolinker.link(feature.properties['Responsable:'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">Teléfono:</th>\
-                        <td>' + (feature.properties['Teléfono:'] !== null ? autolinker.link(feature.properties['Teléfono:'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
+            var popupContent = '<table>\n                    <tr>\n                        <td colspan="2">' + (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</td>\n                    </tr>\n                    <tr>\n                        <th scope="row">Departamento:</th>\n                        <td>' + (feature.properties['Departamento:'] !== null ? autolinker.link(feature.properties['Departamento:'].toLocaleString()) : '') + '</td>\n                    </tr>\n                    <tr>\n                        <th scope="row">Provincia:</th>\n                        <td>' + (feature.properties['Provincia:'] !== null ? autolinker.link(feature.properties['Provincia:'].toLocaleString()) : '') + '</td>\n                    </tr>\n                    <tr>\n                        <th scope="row">Responsable:</th>\n                        <td>' + (feature.properties['Responsable:'] !== null ? autolinker.link(feature.properties['Responsable:'].toLocaleString()) : '') + '</td>\n                    </tr>\n                    <tr>\n                        <th scope="row">Teléfono:</th>\n                        <td>' + (feature.properties['Teléfono:'] !== null ? autolinker.link(feature.properties['Teléfono:'].toLocaleString()) : '') + '</td>\n                    </tr>\n                </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
-
         function style_Defensacivil_5_0() {
             return {
                 pane: 'pane_Defensacivil_5',
-        rotationAngle: 0.0,
-        rotationOrigin: 'center center',
-        icon: L.icon({
-            iconUrl: 'markers/3319637_bank_building_government_panteon_icon.svg',
-            iconSize: [29.639999999999997, 29.639999999999997]
-        }),
+                rotationAngle: 0.0,
+                rotationOrigin: 'center center',
+                icon: L.icon({
+                    iconUrl: 'markers/3319637_bank_building_government_panteon_icon.svg',
+                    iconSize: [29.64, 29.64]
+                }),
                 interactive: true,
             }
         }
@@ -186,53 +151,26 @@
             pane: 'pane_Defensacivil_5',
             onEachFeature: pop_Defensacivil_5,
             pointToLayer: function (feature, latlng) {
-                var context = {
-                    feature: feature,
-                    variables: {}
-                };
                 return L.marker(latlng, style_Defensacivil_5_0(feature));
             },
         });
-        var cluster_Defensacivil_5 = new L.MarkerClusterGroup({showCoverageOnHover: false,
-            spiderfyDistanceMultiplier: 2});
+        var cluster_Defensacivil_5 = new L.MarkerClusterGroup({showCoverageOnHover: false, spiderfyDistanceMultiplier: 2});
         cluster_Defensacivil_5.addLayer(layer_Defensacivil_5);
-
-        bounds_group.addLayer(layer_Defensacivil_5);
         cluster_Defensacivil_5.addTo(map);
+
         function pop_policia_6(feature, layer) {
-            var popupContent = '<table>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">Departamento:</th>\
-                        <td>' + (feature.properties['Departamento:'] !== null ? autolinker.link(feature.properties['Departamento:'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">Provincia:</th>\
-                        <td>' + (feature.properties['Provincia:'] !== null ? autolinker.link(feature.properties['Provincia:'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">Responsable:</th>\
-                        <td>' + (feature.properties['Responsable:'] !== null ? autolinker.link(feature.properties['Responsable:'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">Teléfono:</th>\
-                        <td>' + (feature.properties['Teléfono:'] !== null ? autolinker.link(feature.properties['Teléfono:'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
+            var popupContent = '<table>\n                    <tr>\n                        <td colspan="2">' + (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</td>\n                    </tr>\n                    <tr>\n                        <th scope="row">Departamento:</th>\n                        <td>' + (feature.properties['Departamento:'] !== null ? autolinker.link(feature.properties['Departamento:'].toLocaleString()) : '') + '</td>\n                    </tr>\n                    <tr>\n                        <th scope="row">Provincia:</th>\n                        <td>' + (feature.properties['Provincia:'] !== null ? autolinker.link(feature.properties['Provincia:'].toLocaleString()) : '') + '</td>\n                    </tr>\n                    <tr>\n                        <th scope="row">Responsable:</th>\n                        <td>' + (feature.properties['Responsable:'] !== null ? autolinker.link(feature.properties['Responsable:'].toLocaleString()) : '') + '</td>\n                    </tr>\n                    <tr>\n                        <th scope="row">Teléfono:</th>\n                        <td>' + (feature.properties['Teléfono:'] !== null ? autolinker.link(feature.properties['Teléfono:'].toLocaleString()) : '') + '</td>\n                    </tr>\n                </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
-
         function style_policia_6_0() {
             return {
                 pane: 'pane_policia_6',
-        rotationAngle: 0.0,
-        rotationOrigin: 'center center',
-        icon: L.icon({
-            iconUrl: 'markers/8684394_police_station_maps_location_placeholder_icon.svg',
-            iconSize: [27.36, 27.36]
-        }),
+                rotationAngle: 0.0,
+                rotationOrigin: 'center center',
+                icon: L.icon({
+                    iconUrl: 'markers/8684394_police_station_maps_location_placeholder_icon.svg',
+                    iconSize: [27.36, 27.36]
+                }),
                 interactive: true,
             }
         }
@@ -247,57 +185,26 @@
             pane: 'pane_policia_6',
             onEachFeature: pop_policia_6,
             pointToLayer: function (feature, latlng) {
-                var context = {
-                    feature: feature,
-                    variables: {}
-                };
                 return L.marker(latlng, style_policia_6_0(feature));
             },
         });
-        var cluster_policia_6 = new L.MarkerClusterGroup({showCoverageOnHover: false,
-            spiderfyDistanceMultiplier: 2});
+        var cluster_policia_6 = new L.MarkerClusterGroup({showCoverageOnHover: false, spiderfyDistanceMultiplier: 2});
         cluster_policia_6.addLayer(layer_policia_6);
-
-        bounds_group.addLayer(layer_policia_6);
         cluster_policia_6.addTo(map);
+
         function pop_Centrosdesalud_7(feature, layer) {
-            var popupContent = '<table>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">Departamento:</th>\
-                        <td>' + (feature.properties['Departamento:'] !== null ? autolinker.link(feature.properties['Departamento:'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">Descripción:</th>\
-                        <td>' + (feature.properties['Descripción:'] !== null ? autolinker.link(feature.properties['Descripción:'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">Provincia:</th>\
-                        <td>' + (feature.properties['Provincia:'] !== null ? autolinker.link(feature.properties['Provincia:'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">Responsable:</th>\
-                        <td>' + (feature.properties['Responsable:'] !== null ? autolinker.link(feature.properties['Responsable:'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">Teléfono:</th>\
-                        <td>' + (feature.properties['Teléfono:'] !== null ? autolinker.link(feature.properties['Teléfono:'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
+            var popupContent = '<table>\n                    <tr>\n                        <td colspan="2">' + (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</td>\n                    </tr>\n                    <tr>\n                        <th scope="row">Departamento:</th>\n                        <td>' + (feature.properties['Departamento:'] !== null ? autolinker.link(feature.properties['Departamento:'].toLocaleString()) : '') + '</td>\n                    </tr>\n                    <tr>\n                        <th scope="row">Descripción:</th>\n                        <td>' + (feature.properties['Descripción:'] !== null ? autolinker.link(feature.properties['Descripción:'].toLocaleString()) : '') + '</td>\n                    </tr>\n                    <tr>\n                        <th scope="row">Provincia:</th>\n                        <td>' + (feature.properties['Provincia:'] !== null ? autolinker.link(feature.properties['Provincia:'].toLocaleString()) : '') + '</td>\n                    </tr>\n                    <tr>\n                        <th scope="row">Responsable:</th>\n                        <td>' + (feature.properties['Responsable:'] !== null ? autolinker.link(feature.properties['Responsable:'].toLocaleString()) : '') + '</td>\n                    </tr>\n                    <tr>\n                        <th scope="row">Teléfono:</th>\n                        <td>' + (feature.properties['Teléfono:'] !== null ? autolinker.link(feature.properties['Teléfono:'].toLocaleString()) : '') + '</td>\n                    </tr>\n                </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
-
         function style_Centrosdesalud_7_0() {
             return {
                 pane: 'pane_Centrosdesalud_7',
-        rotationAngle: 0.0,
-        rotationOrigin: 'center center',
-        icon: L.icon({
-            iconUrl: 'markers/8684369_hospital_healthcare_maps_location_placeholder_icon.svg',
-            iconSize: [27.36, 27.36]
-        }),
+                rotationAngle: 0.0,
+                rotationOrigin: 'center center',
+                icon: L.icon({
+                    iconUrl: 'markers/8684369_hospital_healthcare_maps_location_placeholder_icon.svg',
+                    iconSize: [27.36, 27.36]
+                }),
                 interactive: true,
             }
         }
@@ -312,37 +219,157 @@
             pane: 'pane_Centrosdesalud_7',
             onEachFeature: pop_Centrosdesalud_7,
             pointToLayer: function (feature, latlng) {
-                var context = {
-                    feature: feature,
-                    variables: {}
-                };
                 return L.marker(latlng, style_Centrosdesalud_7_0(feature));
             },
         });
-        var cluster_Centrosdesalud_7 = new L.MarkerClusterGroup({showCoverageOnHover: false,
-            spiderfyDistanceMultiplier: 2});
+        var cluster_Centrosdesalud_7 = new L.MarkerClusterGroup({showCoverageOnHover: false, spiderfyDistanceMultiplier: 2});
         cluster_Centrosdesalud_7.addLayer(layer_Centrosdesalud_7);
-
-        bounds_group.addLayer(layer_Centrosdesalud_7);
         cluster_Centrosdesalud_7.addTo(map);
+
         var osmGeocoder = new L.Control.Geocoder({
             collapsed: true,
             position: 'topleft',
             text: 'Search',
             title: 'Testing'
         }).addTo(map);
-        document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
-        .className += ' fa fa-search';
-        document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
-        .title += 'Search for a place';
+        document.getElementsByClassName('leaflet-control-geocoder-icon')[0].className += ' fa fa-search';
+        document.getElementsByClassName('leaflet-control-geocoder-icon')[0].title += 'Search for a place';
+        
         var baseMaps = {};
-        L.control.layers(baseMaps,{'<img src="legend/Centrosdesalud_7.png" /> Centros de salud': cluster_Centrosdesalud_7,'<img src="legend/policia_6.png" /> policia': cluster_policia_6,'<img src="legend/Defensacivil_5.png" /> Defensa civil': cluster_Defensacivil_5,'<img src="legend/lineasfir_4.png" /> lineas fir': layer_lineasfir_4,"carta vfr2": layer_cartavfr2_3,"Google Hybrid": layer_GoogleHybrid_2,"ESRI Boundaries&Places": layer_ESRIBoundariesPlaces_1,"ESRI Satellite": layer_ESRISatellite_0,}).addTo(map);
-        setBounds();
-        L.ImageOverlay.include({
-            getBounds: function () {
-                return this._bounds;
+        var overlays = {
+            '<img src="legend/Centrosdesalud_7.png" /> Centros de salud': cluster_Centrosdesalud_7,
+            '<img src="legend/policia_6.png" /> policia': cluster_policia_6,
+            '<img src="legend/Defensacivil_5.png" /> Defensa civil': cluster_Defensacivil_5,
+            '<img src="legend/lineasfir_4.png" /> lineas fir': layer_lineasfir_4,
+            "carta vfr2": layer_cartavfr2_3,
+            "Google Hybrid": layer_GoogleHybrid_2,
+            "ESRI Boundaries&Places": layer_ESRIBoundariesPlaces_1,
+            "ESRI Satellite": layer_ESRISatellite_0,
+        };
+
+        const planeColors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf'];
+        let flightTrackLayer = null;
+        const aircraftMarkers = new Map();
+
+        function getColorForCallsign(callsign) {
+            if (!callsign || callsign.trim() === '') return '#555555';
+            let hash = 0;
+            for (let i = 0; i < callsign.length; i++) {
+                hash = callsign.charCodeAt(i) + ((hash << 5) - hash);
             }
-        });
+            return planeColors[Math.abs(hash % planeColors.length)];
+        }
+
+        function showFlightTrack(icao24, color) {
+            if (flightTrackLayer) {
+                map.removeLayer(flightTrackLayer);
+            }
+            const trackUrl = `https://opensky-network.org/api/tracks/all?icao24=${icao24}&time=0`;
+            fetch(trackUrl)
+                .then(response => {
+                    if (!response.ok) throw new Error('Network response was not ok: ' + response.statusText);
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.path && data.path.length > 1) {
+                        const latlngs = data.path.map(p => [p[1], p[2]]).filter(p => p[0] && p[1]);
+                        if (latlngs.length > 1) {
+                            flightTrackLayer = L.polyline(latlngs, { color: color, weight: 3, opacity: 0.8 });
+                            flightTrackLayer.addTo(map);
+                        } else {
+                            alert('Ruta no disponible (muy pocos puntos válidos).');
+                        }
+                    } else {
+                        alert('Ruta no disponible (la API no devolvió una ruta).');
+                    }
+                })
+                .catch(error => {
+                    alert('Error al cargar la ruta: ' + error.message);
+                });
+        }
+
+        var airTrafficLayer = L.layerGroup();
+        overlays['<i class="fa fa-plane" style="color:black"></i> Tráfico Aéreo'] = airTrafficLayer;
+        airTrafficLayer.addTo(map);
+
+        function loadAirTraffic() {
+            const bounds = map.getBounds();
+            const url = `https://opensky-network.org/api/states/all?lamin=${bounds.getSouth()}&lomin=${bounds.getWest()}&lamax=${bounds.getNorth()}&lomax=${bounds.getEast()}`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    const receivedIcaos = new Set();
+                    if (data.states) {
+                        data.states.forEach(state => {
+                            const icao24 = state[0];
+                            if (!icao24) return;
+                            receivedIcaos.add(icao24);
+
+                            const callsign = state[1] ? state[1].trim() : 'N/A';
+                            const origin_country = state[2];
+                            const lon = state[5];
+                            const lat = state[6];
+                            const baro_altitude = state[7];
+                            const velocity = state[9];
+                            const heading = state[10];
+                            const vertical_rate = state[11];
+                            const squawk = state[14];
+
+                            if (lat != null && lon != null && heading != null) {
+                                const color = getColorForCallsign(callsign);
+                                const planeIcon = L.divIcon({
+                                    html: `<i class="fa fa-plane" style="color: ${color}; font-size: 24px; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);"></i>`,
+                                    className: 'plane-icon-fa',
+                                    iconSize: [24, 24],
+                                    iconAnchor: [12, 12]
+                                });
+
+                                let marker = aircraftMarkers.get(icao24);
+                                if (marker) {
+                                    marker.setLatLng([lat, lon]);
+                                    marker.setRotationAngle(heading);
+                                    marker.setIcon(planeIcon);
+                                } else {
+                                    marker = L.marker([lat, lon], {
+                                        icon: planeIcon,
+                                        rotationAngle: heading,
+                                    });
+                                    marker.addTo(airTrafficLayer);
+                                    aircraftMarkers.set(icao24, marker);
+                                }
+
+                                const popupText = `<b>Callsign:</b> ${callsign}<br>
+                                                 <b>ICAO24:</b> ${icao24}<br>
+                                                 <b>País de Origen:</b> ${origin_country}<br>
+                                                 <b>Altitud:</b> ${baro_altitude ? (baro_altitude * 3.28084).toFixed(0) + ' ft' : 'N/A'}<br>
+                                                 <b>Velocidad:</b> ${velocity ? (velocity * 1.94384).toFixed(0) + ' kts' : 'N/A'}<br>
+                                                 <b>Tasa Vertical:</b> ${vertical_rate ? (vertical_rate * 196.85).toFixed(0) + ' ft/min' : 'N/A'}<br>
+                                                 <b>Squawk:</b> ${squawk || 'N/A'}`;
+                                
+                                marker.bindPopup(popupText);
+                                marker.off('click').on('click', () => {
+                                    marker.openPopup();
+                                    showFlightTrack(icao24, color);
+                                });
+                            }
+                        });
+                    }
+                    
+                    for (const [icao, marker] of aircraftMarkers.entries()) {
+                        if (!receivedIcaos.has(icao)) {
+                            airTrafficLayer.removeLayer(marker);
+                            aircraftMarkers.delete(icao);
+                        }
+                    }
+                })
+                .catch(error => console.error('Error al cargar datos de OpenSky:', error));
+        }
+
+        setInterval(loadAirTraffic, 15000);
+        loadAirTraffic();
+        
+        L.control.layers(baseMaps, overlays).addTo(map);
         </script>
     </body>
 </html>
