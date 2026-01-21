@@ -294,7 +294,7 @@
 
         function loadAirTraffic() {
             const bounds = map.getBounds();
-            const url = `https://opensky-network.org/api/states/all?lamin=${bounds.getSouth()}&lomin=${bounds.getWest()}&lamax=${bounds.getNorth()}&lomax=${bounds.getEast()}`;
+            const url = `https://194.209.200.34/api/states/all?lamin=${bounds.getSouth()}&lomin=${bounds.getWest()}&lamax=${bounds.getNorth()}&lomax=${bounds.getEast()}`;
 
             fetch(url)
                 .then(response => response.json())
